@@ -1,14 +1,30 @@
-import React, { Component } from 'react';
-import './TemplateName.css';
+import React, { Component } from "react";
+import "./TemplateName.css";
 
-class TemplateName extends Component{
-constructor(){
+/**
+ * TemplateName definition
+ *
+ * @class TemplateName
+ * @extends {Component}
+ */
+class TemplateName extends Component {
+
+  /**
+   * Creates an instance of TemplateName.
+   * @memberof TemplateName
+   */
+  constructor() {
     super();
-}
- render() {
-        return (
-          <h1>TemplateName</h1>
-        )
-    }
+  }
+
+  /**
+   * Method that renders the component
+   *
+   * @return {*} 
+   * @memberof TemplateName
+   */
+  render() {
+    return <h1>TemplateName</h1>;
+  }
 }
 export default TemplateName;

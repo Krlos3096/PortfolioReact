@@ -1,50 +1,64 @@
 ul.horizontal {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-    width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1;
 }
 
 ul {
-    display: flex;
-    align-items: center;
-    list-style-type: disc;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-inline-start: 40px;
+  display: flex;
+  align-items: stretch;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
 }
 
-li {
-    display: list-item;
-    text-align: -webkit-match-parent;
+ul.horizontal li {
+  display: flex;
+  align-items: center;
+  text-align: -webkit-match-parent;
 }
 
 ul.horizontal li.home {
-    background-color: #4fd1d9;
-    width: 2%;
-    padding: 2%;
+  width: 5vw;
+  height: 5vh;
+}
+
+ul.horizontal li.home img {
+  width: 50%;
+  height: 50%;
+  padding: 25%;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
 }
 
 ul.horizontal li a {
-    display: inline-block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  cursor: default;
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none;
 }
 
-li:hover {
-    opacity: 0.5;
+.active {
+  opacity: 1 !important;
+  background-color: #4fd1d9;
 }
 
-a {
-    color: inherit;
-}
-
-a {
-    background-color: transparent;
+ul.horizontal li:hover {
+  opacity: 0.5;
 }

@@ -1,31 +1,34 @@
 .loading-logo {
-height: 40vmin;
-pointer-events: none;
+  height: 40vmin;
+  pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-.loading-logo {
+  .loading-logo {
     animation: loading-logo-spin infinite 5s linear;
-}
+  }
 }
 
 .busy-loading-container {
-background-color: #282c34;
-min-height: 100vh;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-font-size: calc(5px + 2vmin);
-color: white;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(5px + 2vmin);
+  color: white;
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none;
 }
 
 @keyframes loading-logo-spin {
-from {
+  from {
     transform: rotate(0deg);
-}
-to {
+  }
+  to {
     transform: rotate(360deg);
+  }
 }
-}
-  

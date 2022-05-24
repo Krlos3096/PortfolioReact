@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./TemplateName.css";
+import Styles from "./TemplateName.module.css";
 
 /**
  * TemplateName definition

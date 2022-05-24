@@ -7,13 +7,15 @@
     "default": {
       "customTemplates": {
         "component": "templates/component/TemplateName.jsx",
-        "style": "templates/component/TemplateName.css"
+        "style": "templates/component/TemplateName.module.css",
+        "index": "templates/component/index.js"
       },
       "path": "src/components",
       "withStyle": true,
       "withTest": false,
       "withStory": false,
-      "withLazy": false
+      "withLazy": false,
+      "withIndex": true
     }
   }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "./NavBarComponent.css";
-import home from "../../assets/home.svg";
+import Styles from "./NavBarComponent.module.css";
+import NavBarItem from "../NavBarItem/NavBarItem";
 
 /**
  * Navigation bar component
@@ -9,55 +9,45 @@ import home from "../../assets/home.svg";
  * @extends {Component}
  */
 class NavBarComponent extends Component {
-
   /**
    * Creates an instance of NavBarComponent.
    * @memberof NavBarComponent
    */
   constructor() {
     super();
-    this.myRef = React.createRef();
-    this.options = ["Experiencia", "Estudios", "Habilidades", "Contacto"];
+    this.state = {
+      options: ["Home", "Experiencia", "Estudios", "Habilidades", "Contacto"],
+      activeElement: 0,
+    };
   }
 
   /**
-   * Method that cleans the active class of the li elements of the component
-   *
-   * @memberof NavBarComponent
-   */
-  cleanActive = () => {
-    [...this.myRef.current.children].forEach((li) => {
-      li.classList.remove("active");
-    });
-  };
-
-  /**
-   * Handler for the click event on the ul element of the component
+   * updates the active element so it can update the visual part
    *
    * @param {*} e
    * @memberof NavBarComponent
    */
-  clickHandler = (e) => {
-    this.cleanActive();
-    e.target.parentElement.classList.add("active");
+  updateActiveElement = (id) => {
+    this.setState({ activeElement: id });
   };
 
   /**
    * Method that renders the component
    *
-   * @return {*} 
+   * @return {*}
    * @memberof NavBarComponent
    */
   render() {
     return (
-      <ul className="horizontal" onClick={this.clickHandler} ref={this.myRef}>
-        <li key="Home"className="home active">
-          <img src={home} />
-        </li>
-        {this.options.map((o) => (
-          <li key={o}>
-            <a>{o}</a>
-          </li>
+      <ul className={Styles.horizontal}>
+        {this.state.options.map((name, id) => (
+          <NavBarItem
+            key={id}
+            id={id}
+            name={name}
+            setActiveElement={this.updateActiveElement}
+            isActive={id == this.state.activeElement}
+          />
         ))}
       </ul>
     );

@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import "./BusyLoadingComponent.css";
-import loading from "../../assets/loading.svg";
+import React, { Component } from 'react';
+import Styles from './BusyLoadingComponent.module.css';
+import loading from '../../assets/loading.svg';
 
 /**
  * Busy loader component for the current implementation
@@ -26,8 +26,8 @@ class BusyLoadingComponent extends Component {
    */
   render() {
     return (
-      <div className="busy-loading-container">
-        <img src={loading} className="loading-logo" alt="loading-logo" />
+      <div className={Styles.busyLoadingContainer}>
+        <img src={loading} className={Styles.loadingLogo} alt="loading-logo" />
         <h1>Estamos trabajando...</h1>
       </div>
     );

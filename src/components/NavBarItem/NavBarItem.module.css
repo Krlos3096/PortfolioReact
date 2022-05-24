@@ -1,37 +1,9 @@
-ul.horizontal {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  z-index: 1;
-}
-
-ul {
-  display: flex;
-  align-items: stretch;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  padding-inline-start: 40px;
-}
-
-ul.horizontal li {
-  display: flex;
-  align-items: center;
-  text-align: -webkit-match-parent;
-}
-
-ul.horizontal li.home {
+.home {
   width: 5vw;
   height: 5vh;
 }
 
-ul.horizontal li.home img {
+.home img {
   width: 50%;
   height: 50%;
   padding: 25%;
@@ -41,7 +13,7 @@ ul.horizontal li.home img {
   -o-user-drag: none;
 }
 
-ul.horizontal li a {
+.text {
   display: inline-block;
   color: white;
   text-align: center;
@@ -59,6 +31,12 @@ ul.horizontal li a {
   background-color: #4fd1d9;
 }
 
-ul.horizontal li:hover {
+.textBox {
+  display: flex;
+  align-items: center;
+  text-align: -webkit-match-parent;
+}
+
+.textBox:hover {
   opacity: 0.5;
 }

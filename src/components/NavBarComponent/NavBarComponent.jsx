@@ -11,13 +11,13 @@ import NavBarItem from "../NavBarItem/NavBarItem";
 class NavBarComponent extends Component {
   /**
    * Creates an instance of NavBarComponent.
+   * @param {*} props
    * @memberof NavBarComponent
    */
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      options: ["Home", "Experiencia", "Estudios", "Habilidades", "Contacto"],
-      activeElement: 0,
+      options: ["Home", "Experiencia", "Estudios", "Habilidades"]
     };
   }
 
@@ -28,7 +28,7 @@ class NavBarComponent extends Component {
    * @memberof NavBarComponent
    */
   updateActiveElement = (id) => {
-    this.setState({ activeElement: id });
+    this.props.setActiveAppElement(id)
   };
 
   /**
@@ -46,7 +46,7 @@ class NavBarComponent extends Component {
             id={id}
             name={name}
             setActiveElement={this.updateActiveElement}
-            isActive={id == this.state.activeElement}
+            isActive={id == this.props.activeElement}
           />
         ))}
       </ul>

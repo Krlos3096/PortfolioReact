@@ -9,13 +9,13 @@ import loading from '../../assets/loading.svg';
  * @extends {Component}
  */
 class BusyLoadingComponent extends Component {
-
   /**
    * Creates an instance of BusyLoadingComponent.
+   * @param {*} props
    * @memberof BusyLoadingComponent
    */
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
   /**
@@ -26,7 +26,7 @@ class BusyLoadingComponent extends Component {
    */
   render() {
     return (
-      <div className={Styles.busyLoadingContainer}>
+      <div className={Styles.busyLoadingContainer} style={{ display: this.props.visible ? 'flex': 'none' }}>
         <img src={loading} className={Styles.loadingLogo} alt="loading-logo" />
         <h1>Estamos trabajando...</h1>
       </div>

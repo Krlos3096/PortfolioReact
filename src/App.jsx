@@ -1,13 +1,16 @@
+import React, {useState} from 'react'
 import './App.css'
 import NavBarComponent from './components/NavBarComponent/NavBarComponent'
-import BusyLoadingComponent from './components/BusyLoadingComponent/BusyLoadingComponent'
+import PanelComponent from './components/PanelComponent/PanelComponent'
 
 function App() {
 
+  const [activeElement, setActiveElement] = useState(0)
+
   return (
     <div className="App">
-      <NavBarComponent></NavBarComponent>
-      <BusyLoadingComponent></BusyLoadingComponent>
+      <NavBarComponent activeElement={activeElement} setActiveAppElement={setActiveElement}/>
+      <PanelComponent activeElement={activeElement}/>
     </div>
   )
 }

@@ -1,0 +1,12 @@
+.cornerButtonContainer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 5%;
+}
+
+.cornerButtonContainer Button {
+    background-color: #4fd1d9!important;
+    text-transform: unset !important;
+    color: white;
+}

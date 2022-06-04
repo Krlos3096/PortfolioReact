@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Styles from "./PanelComponent.module.css";
 import BusyLoadingComponent from "../BusyLoadingComponent/BusyLoadingComponent";
 import ContactSection from "../ContactSection/ContactSection";
 
@@ -26,10 +25,10 @@ class PanelComponent extends Component {
    * @memberof PanelComponent
    */
   render() {
-    return <div className={Styles.container}>
-      <BusyLoadingComponent visible={this.props.activeElement != 4}/>
-      <ContactSection visible={this.props.activeElement == 4}/>
-    </div>;
+    return <main>
+      <BusyLoadingComponent visible={this.props.activeElement != 4} activeElement={this.props.activeElement}/>
+      <ContactSection/>
+    </main>;
   }
 }
 export default PanelComponent;

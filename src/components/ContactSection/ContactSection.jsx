@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import {
   TextField,
   Button,
+  IconButton,
   Dialog,
   DialogActions,
   DialogContent,
   DialogContentText,
   DialogTitle,
-} from "@material-ui/core";
+} from "@mui/material";
+import { MessageRounded } from "@mui/icons-material";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import Styles from "./ContactSection.module.css";
@@ -28,8 +30,12 @@ class ContactSection extends Component {
     super(props);
     this.state = {
       isSubmitionCompleted: false,
-      open: false
-    }
+      open: false,
+    };
+    this.setOpen = this.setOpen.bind(this);
+    this.setSubmitionCompleted = this.setSubmitionCompleted.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.handleClickOpen = this.handleClickOpen.bind(this);
   }
 
   /**
@@ -39,8 +45,8 @@ class ContactSection extends Component {
    * @memberof ContactSection
    */
   setOpen = (value) => {
-    this.setState({open: value});
-  }
+    this.setState({ open: value });
+  };
 
   /**
    * Method to set the submitioncompleted property to show the 'thank you' dialog
@@ -49,8 +55,8 @@ class ContactSection extends Component {
    * @memberof ContactSection
    */
   setSubmitionCompleted = (value) => {
-    this.setState({isSubmitionCompleted: value});
-  }
+    this.setState({ isSubmitionCompleted: value });
+  };
 
   /**
    * Method to set the open property that allows to close the dialog
@@ -59,7 +65,7 @@ class ContactSection extends Component {
    */
   handleClose = () => {
     this.setOpen(false);
-  }
+  };
 
   /**
    * Method to set the open property that allows to open the dialog
@@ -69,7 +75,7 @@ class ContactSection extends Component {
   handleClickOpen = () => {
     this.setSubmitionCompleted(false);
     this.setOpen(true);
-  }
+  };
 
   /**
    * Method that renders the component
@@ -81,9 +87,16 @@ class ContactSection extends Component {
     return (
       <React.Fragment>
         <div className={Styles.cornerButtonContainer}>
-          <Button variant="contained" color="inherit" onClick={this.handleClickOpen}>
-            Contacto
-          </Button>
+          <IconButton
+            size="large"
+            aria-label="account of current user"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            color="inherit"
+            onClick={this.handleClickOpen}
+          >
+            <MessageRounded className={Styles.MessageIcon}/>
+          </IconButton>
         </div>
         <Dialog
           open={this.state.open}
@@ -92,12 +105,12 @@ class ContactSection extends Component {
         >
           {!this.state.isSubmitionCompleted && (
             <React.Fragment>
-              <DialogTitle id="form-dialog-title">Contacto</DialogTitle>
+              <DialogTitle id="form-dialog-title" style={{ backgroundColor: '#333', color: 'white', margin: '1%', borderRadius: '10px'}}>Contacto</DialogTitle>
               <DialogContent>
                 <DialogContentText>¡Gracias por tu interes!</DialogContentText>
                 <Formik
                   initialValues={{ email: "", name: "", comment: "" }}
-                  onSubmit={(values,{ setSubmitting }) => {
+                  onSubmit={(values, { setSubmitting }) => {
                     setSubmitting(true);
                     this.setSubmitionCompleted(true);
                   }}
@@ -162,7 +175,7 @@ class ContactSection extends Component {
                           }
                           margin="normal"
                         />
-                        <DialogActions>
+                        <DialogActions className={Styles.dialogActions}>
                           <Button
                             type="button"
                             className="outline"
@@ -186,7 +199,9 @@ class ContactSection extends Component {
             <React.Fragment>
               <DialogTitle id="form-dialog-title">Contacto</DialogTitle>
               <DialogContent>
-                <DialogContentText>¡Gracias, pronto te contactaremos!</DialogContentText>
+                <DialogContentText>
+                  ¡Gracias, pronto te contactaremos!
+                </DialogContentText>
                 <DialogActions>
                   <Button
                     type="button"

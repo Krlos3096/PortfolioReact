@@ -1,6 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 .App {
+  height: 100%;
   text-align: center;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+html, body, #root {
+  margin: 0;
+  height: 100%;
+  min-height: 100%;
+}
+
+header,
+footer {
+  flex: none;
+}
+
+main {
+  -webkit-overflow-scrolling: touch!important;
+  flex: auto;
 }

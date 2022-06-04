@@ -7,6 +7,24 @@
 
 .cornerButtonContainer Button {
     background-color: #4fd1d9!important;
-    text-transform: unset !important;
     color: white;
+    text-transform: unset !important;
+}
+
+.dialogActions Button {
+    color: #4fd1d9;
+}
+
+@media (min-width: 0) and (orientation: landscape) {
+    .cornerButtonContainer Button .MessageIcon {
+        height: 3vw;
+        width: 3vw;
+    }
+}
+
+@media (min-width: 0) and (orientation: portrait) {
+    .cornerButtonContainer Button .MessageIcon {
+        height: 3vh;
+        width: 3vh;
+    }
 }

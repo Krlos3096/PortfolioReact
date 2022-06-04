@@ -155,7 +155,6 @@ class NavBarComponent extends Component {
                 variant="h5"
                 noWrap
                 component="a"
-                href=""
                 children={this.state.activeElement}
                 sx={{
                   mr: 2,

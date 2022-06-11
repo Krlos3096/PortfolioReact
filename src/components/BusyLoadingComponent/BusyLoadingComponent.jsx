@@ -26,7 +26,7 @@ class BusyLoadingComponent extends Component {
    */
   render() {
     return (
-      <div className={Styles.busyLoadingContainer} style={{ display: this.props.visible ? 'flex': 'none' }}>
+      <div className={Styles.busyLoadingContainer}>
         <img src={loading} className={Styles.loadingLogo} alt="loading-logo" />
         <h1>Estamos trabajando...({this.props.activeElement})</h1>
       </div>

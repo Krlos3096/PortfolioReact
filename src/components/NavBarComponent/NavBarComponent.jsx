@@ -1,15 +1,19 @@
 import React, { Component } from "react";
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Menu from "@mui/material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
+import Container from "@mui/material/Container";
+import Button from "@mui/material/Button";
+import MenuItem from "@mui/material/MenuItem";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { NavLink } from "react-router-dom";
+import { withRouter } from "react-router";
+import Styles from "./NavBarComponent.module.css";
+
 /**
  * Navigation bar component
  *
@@ -26,13 +30,12 @@ class NavBarComponent extends Component {
     super(props);
     this.state = {
       options: ["Home", "Experiencia", "Estudios", "Habilidades"],
-      activeElement: 'Home',
-      anchorElNav: null
+      anchorElNav: null,
     };
     this.updateActiveElement = this.updateActiveElement.bind(this);
     this.setAnchorElNav = this.setAnchorElNav.bind(this);
     this.setActiveElement = this.setActiveElement.bind(this);
-    this.handleOpenNavMenu =  this.handleOpenNavMenu.bind(this);
+    this.handleOpenNavMenu = this.handleOpenNavMenu.bind(this);
     this.handleCloseNavMenu = this.handleCloseNavMenu.bind(this);
   }
 
@@ -43,9 +46,9 @@ class NavBarComponent extends Component {
    */
   darkTheme = createTheme({
     palette: {
-      mode: 'dark',
+      mode: "dark",
       primary: {
-        main: '#333;',
+        main: "#333;",
       },
     },
   });
@@ -57,8 +60,8 @@ class NavBarComponent extends Component {
    * @memberof NavBarComponent
    */
   setAnchorElNav = (value) => {
-    this.setState({anchorElNav: value})
-  }
+    this.setState({ anchorElNav: value });
+  };
 
   /**
    * Sets the active element to update the state of the component and show it
@@ -67,9 +70,8 @@ class NavBarComponent extends Component {
    * @memberof NavBarComponent
    */
   setActiveElement = (value) => {
-    this.setState({activeElement: value})
     this.updateActiveElement(this.state.options.indexOf(value));
-  }
+  };
 
   /**
    * Handle the open nav menu when the user clicks on the menu button in the nav bar
@@ -90,7 +92,9 @@ class NavBarComponent extends Component {
   handleCloseNavMenu = (event) => {
     this.setAnchorElNav(null);
     let element = event.currentTarget.innerText;
-    this.setActiveElement(this.state.options.includes(element) ? element : activeElement);
+    this.setActiveElement(
+      this.state.options.includes(element) ? element : activeElement
+    );
   };
 
   /**
@@ -112,7 +116,10 @@ class NavBarComponent extends Component {
   render() {
     return (
       <ThemeProvider theme={this.darkTheme}>
-        <AppBar position="static" sx={{margin: '1%', width:'98%', borderRadius:'10px'}}>
+        <AppBar
+          position="static"
+          sx={{ margin: "1%", width: "98%", borderRadius: "10px" }}
+        >
           <Container maxWidth="xl">
             <Toolbar disableGutters>
               <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -145,9 +152,16 @@ class NavBarComponent extends Component {
                   }}
                 >
                   {this.state.options.map((option) => (
-                    <MenuItem key={option} onClick={this.handleCloseNavMenu}>
-                      <Typography textAlign="center">{option}</Typography>
-                    </MenuItem>
+                    <NavLink
+                      key={option}
+                      className={Styles.linked}
+                      to={`/${option}`}
+                      style={{ textDecoration: "none" }}
+                    >
+                      <MenuItem onClick={this.handleCloseNavMenu}>
+                        <Typography textAlign="center">{option}</Typography>
+                      </MenuItem>
+                    </NavLink>
                   ))}
                 </Menu>
               </Box>
@@ -155,7 +169,6 @@ class NavBarComponent extends Component {
                 variant="h5"
                 noWrap
                 component="a"
-                children={this.state.activeElement}
                 sx={{
                   mr: 2,
                   display: { xs: "flex", md: "none" },
@@ -166,22 +179,29 @@ class NavBarComponent extends Component {
                   color: "inherit",
                   textDecoration: "none",
                 }}
-              />
+              >
+                {location.pathname.substring(1)}
+              </Typography>
               <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
                 {this.state.options.map((option) => (
-                  <Button
+                  <NavLink
                     key={option}
-                    onClick={this.handleCloseNavMenu}
-                    sx={{
-                      my: 2,
-                      background: this.state.activeElement == option ? "#4fd1d9" : "none",
-                      textTransform: "unset",
-                      color: "white",
-                      display: "block",
-                    }}
+                    activeClassName={Styles.selectedLink}
+                    to={`/${option}`}
+                    style={{ textDecoration: "none" }}
                   >
-                    {option}
-                  </Button>
+                    <Button
+                      onClick={this.handleCloseNavMenu}
+                      sx={{
+                        my: 2,
+                        textTransform: "unset",
+                        color: "white",
+                        display: "block",
+                      }}
+                    >
+                      {option}
+                    </Button>
+                  </NavLink>
                 ))}
               </Box>
             </Toolbar>
@@ -191,4 +211,4 @@ class NavBarComponent extends Component {
     );
   }
 }
-export default NavBarComponent;
+export default withRouter(NavBarComponent);

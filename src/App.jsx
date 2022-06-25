@@ -2,10 +2,10 @@ import React, {useState} from 'react'
 import './App.css'
 import NavBarComponent from './components/NavBarComponent/NavBarComponent'
 import PanelComponent from './components/PanelComponent/PanelComponent'
+import { changeActiveElement } from './redux/actions/menuActions'
+import { connect } from 'react-redux'
 
-function App() {
-
-  const [activeElement, setActiveElement] = useState(0)
+function App({ setActiveElement, activeElement }) {
 
   return (
     <div className="App">
@@ -15,4 +15,16 @@ function App() {
   )
 }
 
-export default App
+const mapStateToProps = (state) => {
+  return {
+    activeElement: state
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+      setActiveElement: (activeElement) => dispatch(changeActiveElement(activeElement))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

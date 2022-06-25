@@ -28,7 +28,7 @@ class BusyLoadingComponent extends Component {
     return (
       <div className={Styles.busyLoadingContainer}>
         <img src={loading} className={Styles.loadingLogo} alt="loading-logo" />
-        <h1>Estamos trabajando...({this.props.activeElement})</h1>
+        <h1>Estamos trabajando...({this.props.activeElement})({this.props.index})</h1>
       </div>
     );
   }

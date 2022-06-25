@@ -29,19 +29,19 @@ class PanelComponent extends Component {
       <main>
         <Switch>
           <Route path="/Home">
-            <BusyLoadingComponent activeElement="Home" />
+            <BusyLoadingComponent activeElement="Home" index={this.props.activeElement} />
           </Route>
           <Route path="/Experiencia">
-            <BusyLoadingComponent activeElement="Experiencia" />
+            <BusyLoadingComponent activeElement="Experiencia" index={this.props.activeElement} />
           </Route>
           <Route path="/Estudios">
-            <BusyLoadingComponent activeElement="Estudios" />
+            <BusyLoadingComponent activeElement="Estudios" index={this.props.activeElement} />
           </Route>
           <Route path="/Habilidades">
-            <BusyLoadingComponent activeElement="Habilidades" />
+            <BusyLoadingComponent activeElement="Habilidades" index={this.props.activeElement} />
           </Route>
           <Route path="*">
-            <BusyLoadingComponent activeElement="Not Found" />
+            <BusyLoadingComponent activeElement="Not Found" index={this.props.activeElement} />
           </Route>
         </Switch>
         <ContactSection />
